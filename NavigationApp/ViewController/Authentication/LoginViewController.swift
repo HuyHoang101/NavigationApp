@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
-        // Thêm shadow shadow để nổi bật hơn
         view.layer.shadowOpacity = 0.25
         view.layer.shadowRadius = 12
         view.layer.shadowOffset = CGSize(width: 0, height: 6)
@@ -28,7 +27,7 @@ class LoginViewController: UIViewController {
     private func createTextField(placeholder: String, isSecure: Bool = false) -> UITextField {
         let tf = UITextField()
         tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
-        tf.backgroundColor = .systemIndigo.withAlphaComponent(0.1) // Thay colorLiteral bằng code sạch
+        tf.backgroundColor = .systemIndigo.withAlphaComponent(0.1)
         tf.layer.cornerRadius = 8
         tf.isSecureTextEntry = isSecure
         tf.autocapitalizationType = .none

@@ -16,10 +16,8 @@ class TabBarMainViewController: UITabBarController {
         let HomeVC = HomeViewController()
         let FavoriteVC = UIViewController()
         FavoriteVC.view.backgroundColor = .systemBackground
-        let BookMark = UIViewController()
-        BookMark.view.backgroundColor = .systemBackground
-        let UserVC = UIViewController()
-        UserVC.view.backgroundColor = .systemBackground
+        let BookMark = BookmarkViewController()
+        let UserVC = UserViewController()
         
         
         //Tab bar items
@@ -48,14 +46,5 @@ class TabBarMainViewController: UITabBarController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

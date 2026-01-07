@@ -4,7 +4,7 @@ class HomeViewController: UIViewController {
     
     let welcomeLabel = UILabel()
     let loginText = UITextView()
-    let subLabel = UILabel() // Dòng chữ thứ 2 tuỳ ý
+    let subLabel = UILabel()
     let vstack = UIStackView()
     
     override func viewDidLoad() {
@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         // Cấu hình Welcome Label
-        welcomeLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 60, weight: .bold)
         welcomeLabel.numberOfLines = 0
         
         // Cấu hình Sub Label (Dòng chữ thứ 2)
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         vstack.addArrangedSubview(loginText)
         
         NSLayoutConstraint.activate([
-            vstack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            vstack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
             vstack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             vstack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
         ])
@@ -54,13 +54,14 @@ class HomeViewController: UIViewController {
         updateUIState()
     }
     
-    // Hàm then chốt để thay đổi giao diện dựa trên Login State
+    
     private func updateUIState() {
         let session = UserSession.shared
         
         if session.isLoggedIn, let user = session.currentUser {
             // --- TRẠNG THÁI ĐÃ LOGIN ---
             welcomeLabel.text = "Welcome,\n\(user.name)!"
+            welcomeLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
             subLabel.text = "Ready to discover your next favorite book?"
             subLabel.isHidden = false
             loginText.isHidden = true
@@ -92,11 +93,12 @@ class HomeViewController: UIViewController {
         
         attributed.addAttributes([
             .foregroundColor: UIColor.systemBlue,
-            .font: UIFont.systemFont(ofSize: 20, weight: .medium),
+            .font: UIFont.systemFont(ofSize: 20, weight: .regular),
             .link: URL(string: "login://action")!
         ], range: loginRange)
         
         loginText.attributedText = attributed
+        loginText.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         loginText.textAlignment = .left
     }
     
@@ -118,7 +120,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-// Giữ nguyên Extension của cậu
+
 extension HomeViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "login" {
